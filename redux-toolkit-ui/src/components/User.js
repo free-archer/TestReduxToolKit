@@ -2,13 +2,17 @@ import React from 'react'
 import FirstName from './FirstName'
 import LastName from './LastName'
 import { useDispatch } from 'react-redux'
-import { setFirstName } from '../slises/user/userSlise' 
+import { setFirstName, setLastName } from '../store/store' 
 
 const User = () => {
     const dispatch = useDispatch()
 
     const setFirstNameOnChange = (event) => {
         dispatch(setFirstName(event.target.value))
+    }
+
+    function setLastNameOnChange(event) {
+        dispatch(setLastName(event.target.value))
     }
 
     return (
@@ -20,6 +24,7 @@ const User = () => {
                 className='w-full p-1 mb-2 focus:outline-none focus:border-lime-500 focus: border-2 placeholder:text-sm'
             />
             <input
+            onChange={setLastNameOnChange}
                 type='text'
                 placeholder='Second Name'
                 className='w-full p-1 mb-2 focus:outline-none focus:border-lime-500 focus: border-2 placeholder:text-sm'
