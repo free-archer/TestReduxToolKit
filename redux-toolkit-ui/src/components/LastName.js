@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux'
 
 const LastName = () => {
 
-    const getName = (state) => {
+    function getName(state) {
         return state.user.lastName
     }
+
     const name = useSelector(getName)
 
     return <div className='font-bold'>{name}</div>
