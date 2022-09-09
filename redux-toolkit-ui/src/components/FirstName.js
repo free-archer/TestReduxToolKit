@@ -1,7 +1,7 @@
 import React from 'react'
 
-const FirstName = () => {
-    return <div className='font-bold'>First Name</div>
+const FirstName = (props) => {
+    return <div className='font-bold'>{props.name}</div>
 }
 
 export default FirstName
