@@ -4,6 +4,7 @@ import TodoItem from './components/TodoItem'
 import User from './components/User'
 import Posts from './components/Posts'
 
+
 function App() {
     return (
         <div className='min-h-screen h-full w-screen bg-indigo-400'>
