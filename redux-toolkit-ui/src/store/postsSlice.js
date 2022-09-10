@@ -28,11 +28,11 @@ export const postsSlice = createSlice({
          },
 
      },
-     extraReducers: {
-        [getPostAsync.fulfilled]: () => {console.log("fulfilled")},
-        [getPostAsync.pending]: () => {console.log("pending")},
-        [getPostAsync.rejected]: () => {console.log("rejected")},
-     }
+    //  extraReducers: {
+    //     [getPostAsync.fulfilled]: () => {console.log("fulfilled")},
+    //     [getPostAsync.pending]: () => {console.log("pending")},
+    //     [getPostAsync.rejected]: () => {console.log("rejected")},
+    //  }
  })
 
 export const { setPosts } = postsSlice.actions
