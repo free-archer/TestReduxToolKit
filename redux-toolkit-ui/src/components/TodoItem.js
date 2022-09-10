@@ -1,30 +1,32 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { setTextCompleted, deleteText } from '../store/store'
+import { deleteText, setTextCompleted } from '../store/todoSlice'
 
-const TodoItem = () => {
+
+const TodoItem = (props) => {
+    let {id, text, completed} = props.todo
 
     const dispatcher  = useDispatch()
 
 
     function CompleteHandler() {
+        dispatcher(setTextCompleted(id))
+    }
 
-}
-
-function DeleteHandler() {
-
-}
-
-    const completed = false
+    function DeleteHandler() {
+        dispatcher(deleteText(id))
+    }
+    
     return (
-        <div className='flex justify-between items-center my-2'>
+        <div
+            className='flex justify-between items-center my-2'>
             <div 
                 onClick={CompleteHandler}
                 className='text-sm px-4 py-2 cursor-pointer bg-lime-300 hover:bg-lime-400'>
                 Complete
             </div>
             <div className={`text-sm ${completed ? 'line-through font-medium text-lime-400' : ''}`}>
-                Todo Text
+                {text}
             </div>
             <div 
                 onClick={DeleteHandler}

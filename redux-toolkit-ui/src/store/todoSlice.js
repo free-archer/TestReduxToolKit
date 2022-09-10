@@ -14,12 +14,12 @@ export const todoSlice = createSlice({
         setAddText: (store, action) => {
              store.push(action.payload)
          },
-         setTextCompleted: function(store, action) {
-            let curText = store.filter((text) => (text == action.payload))
+         setTextCompleted: function(state, action) {
+            let curText = state.find((todo) => (todo.id === action.payload))
             curText.completed = !curText.completed
          },
          deleteText: function(store, action) {
-            store.filter((text) => (text !== action.payload))
+            store = store.filter((todo) => (todo.id !== action.payload))
         }
      }
  })
