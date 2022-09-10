@@ -10,11 +10,13 @@ const initialState =
 }
 
 export const getPostAsync = createAsyncThunk(
-    'posts',
-    async (_, { rejectWithValue, dispatch } ) => {
+    'posts/getPostAsync',
+    async () => {
         const res = await axios('https://jsonplaceholder.typicode.com/posts')
 
-        dispatch(setPosts(res.data))
+        // dispatch(setPosts(res.data))
+
+        return res.data
 
     }
 )
@@ -22,17 +24,24 @@ export const getPostAsync = createAsyncThunk(
 export const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers: {
-        setPosts: (store, action) => {
-             store.posts = action.payload
-         },
+    reducers: {},
+    //     {
+    //     setPosts: (store, action) => {
+    //          store.posts = action.payload
+    //      },
 
-     },
+    //  },
     //  extraReducers: {
     //     [getPostAsync.fulfilled]: () => {console.log("fulfilled")},
     //     [getPostAsync.pending]: () => {console.log("pending")},
     //     [getPostAsync.rejected]: () => {console.log("rejected")},
     //  }
+
+    extraReducers: (builder) => {
+        builder.addCase(getPostAsync.fulfilled, (store, action) =>{
+            store.posts = action.payload
+        })
+    }
  })
 
 export const { setPosts } = postsSlice.actions
