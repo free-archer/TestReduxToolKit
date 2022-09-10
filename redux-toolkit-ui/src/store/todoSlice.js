@@ -1,25 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const initialState = 
+    {
+    todos: [
+        {
+        id: '1',
+        text: 'new text',
+        completed: false
+        }
+    ]
+}
+
 export const todoSlice = createSlice({
     name: 'todos',
-    initialState: 
-        [
-            {
-            id: '1',
-            text: 'new text',
-            completed: false
-            }
-        ],
+    initialState,
     reducers: {
         setAddText: (store, action) => {
-             store.push(action.payload)
+             store.todos.push(action.payload)
          },
          setTextCompleted: function(state, action) {
-            let curText = state.find((todo) => (todo.id === action.payload))
+            let curText = state.todos.find((todo) => (todo.id === action.payload))
             curText.completed = !curText.completed
          },
          deleteText: function(store, action) {
-            store = store.filter((todo) => (todo.id !== action.payload))
+            store.todos = store.todos.filter((todo) => (todo.id !== action.payload))
         }
      }
  })

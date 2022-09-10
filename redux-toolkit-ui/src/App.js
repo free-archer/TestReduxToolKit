@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 
 function App() {
 
-    const todos = useSelector(store => store.todos)
+    const todos = useSelector(store => store.todos.todos)
 
     return (
         <div className='min-h-screen h-full w-screen bg-indigo-400'>
