@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
 import PostItem from './PostItem'
 import axios from 'axios'
+import { Octokit } from "@octokit/core";
+
 
 const Posts = () => {
     const [posts, setPosts] = useState([])
 
     const getPost = async () => {
-        // const res = fetch('https://jsonplaceholder.typicode.com/posts')
-        // const json = res.then((response) => response.json())
-        // json.then((data) => setPosts(state => data));        
 
-        // const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-        // const json = await res.json()
-        // setPosts(state => json)
+        const octokit = new Octokit({
+            auth: "",
+          });
 
-        const res = await axios('https://jsonplaceholder.typicode.com/todos')
-        setPosts(state => res.data)
-
+        //   const { data } = await octokit.request("/user");
+          const issues = await octokit.request('GET /repos/free-archer/Sibedge/issues', {})
+          setPosts(state => issues.data)
 
     }
 
